@@ -2,6 +2,9 @@
    RESPONSIVE MOBILE — PAGE PRINCIPALE (<= 768px)
    ========================================================== */
 @media screen and (max-width: 768px) {
+  .project-preview {
+    display: none !important;
+  }
   /* ----------------------------------------------------------
      0. LOADER MOBILE (2.5s + MESSAGE DE RECOMMANDATION)
      ---------------------------------------------------------- */

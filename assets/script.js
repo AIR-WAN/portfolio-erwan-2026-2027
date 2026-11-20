@@ -134,6 +134,70 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* ==========================================================
+     1B. PREVIEW FLOTTANTE AU SURVOL DES PROJETS (DESKTOP)
+     ========================================================== */
+  const cadrePreview = document.getElementById("project-preview");
+  const imgPreview = cadrePreview ? cadrePreview.querySelector("img") : null;
+  const cartesProjets = document.querySelectorAll(".projets_div");
+
+  if (cadrePreview && imgPreview && cartesProjets.length > 0) {
+    let sourisX = 0;
+    let sourisY = 0;
+    let cadreX = 0;
+    let cadreY = 0;
+    let estVisible = false;
+
+    function animerPreview() {
+      // Suivi fluide avec légère inertie
+      cadreX += (sourisX - cadreX) * 0.16;
+      cadreY += (sourisY - cadreY) * 0.16;
+
+      cadrePreview.style.left = `${cadreX}px`;
+      cadrePreview.style.top = `${cadreY}px`;
+
+      if (estVisible) {
+        requestAnimationFrame(animerPreview);
+      }
+    }
+
+    cartesProjets.forEach((carte) => {
+      carte.addEventListener("mouseenter", (e) => {
+        if (window.innerWidth <= 768) return;
+
+        const srcImage = carte.dataset.preview;
+        if (!srcImage) return;
+
+        imgPreview.src = srcImage;
+
+        // Place instantanément le cadre au curseur à l'entrée pour éviter un saut depuis (0,0)
+        if (!estVisible) {
+          sourisX = e.clientX;
+          sourisY = e.clientY;
+          cadreX = sourisX;
+          cadreY = sourisY;
+          cadrePreview.style.left = `${cadreX}px`;
+          cadrePreview.style.top = `${cadreY}px`;
+          estVisible = true;
+          requestAnimationFrame(animerPreview);
+        }
+
+        cadrePreview.classList.add("is-visible");
+      });
+
+      carte.addEventListener("mousemove", (e) => {
+        if (window.innerWidth <= 768) return;
+        sourisX = e.clientX;
+        sourisY = e.clientY;
+      });
+
+      carte.addEventListener("mouseleave", () => {
+        estVisible = false;
+        cadrePreview.classList.remove("is-visible");
+      });
+    });
+  }
+
+  /* ==========================================================
      2. MENU ACTIF AU SCROLL ET AU CLIC (SCROLLSPY)
      ========================================================== */
   const liensMenu = document.querySelectorAll("header .menu a");
