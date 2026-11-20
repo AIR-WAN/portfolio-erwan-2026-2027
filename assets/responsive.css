@@ -30,15 +30,23 @@
   }
 
   /* ----------------------------------------------------------
-     2. HEADER & MENU (LOGO CENTRÉ EN HAUT + ONGLETS EN DESSOUS)
+     2. HEADER & MENU (COLLÉ EN HAUT PLEINE LARGEUR + FOND BLANC)
      ---------------------------------------------------------- */
-  header {
-    top: 24px;
-    left: 24px;
-    right: 24px;
+  header,
+  header:hover {
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 20px 24px 16px 24px;
+    background: #ffffff;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border: none;
+    border-radius: 0;
+    box-shadow: 0 4px 20px rgba(12, 12, 12, 0.06);
     flex-direction: column;
     align-items: center;
-    gap: 25px;
+    gap: 18px;
   }
 
   header .logo-link {
@@ -337,9 +345,9 @@
     padding: 0 18px;
   }
 
-  header {
-    left: 18px;
-    right: 18px;
+  header,
+  header:hover {
+    padding: 18px 18px 14px 18px;
   }
 
   header .menu {
