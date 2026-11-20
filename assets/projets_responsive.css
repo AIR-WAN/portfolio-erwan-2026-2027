@@ -1,0 +1,132 @@
+/* ==========================================================
+   RESPONSIVE MOBILE — PAGES PROJETS (<= 768px)
+   ========================================================== */
+@media screen and (max-width: 768px) {
+  /* ----------------------------------------------------------
+     1. RÉACTIVATION DU SCROLL & MARGES LATÉRALES (24px)
+     ---------------------------------------------------------- */
+  html,
+  body {
+    height: auto;
+    min-height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  body {
+    padding: 0 24px;
+  }
+
+  /* ----------------------------------------------------------
+     2. HEADER & MENU (LOGO CENTRÉ EN HAUT + ONGLETS EN DESSOUS)
+     ---------------------------------------------------------- */
+  header {
+    top: 24px;
+    left: 24px;
+    right: 24px;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+  }
+
+  header .logo-link {
+    display: flex;
+    justify-content: center;
+  }
+
+  header .menu {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  header .menu a {
+    font-size: 14px;
+  }
+
+/* ----------------------------------------------------------
+     3. CONTENEUR PROJET (MÊME RESPIRATION SOUS LE HEADER QUE L'INDEX)
+     ---------------------------------------------------------- */
+  .projet {
+    margin-top: 0;
+    padding-top: 140px;
+    height: auto;
+    flex-direction: column;
+    gap: 48px;
+    padding-bottom: 80px;
+  }
+
+  /* Bloc texte placé en premier pour lire le contexte avant les visuels */
+  .projet_text {
+    order: 1;
+    width: 100%;
+    height: auto;
+    align-items: flex-start;
+    padding-top: 0;
+  }
+
+  .projet_text .hero_text_div {
+    width: 100%;
+    gap: 24px;
+  }
+
+  .projet_text h1 {
+    font-size: 32px;
+    line-height: 1.15;
+  }
+
+  .projet_text h2 {
+    font-size: 20px;
+    line-height: 1.4;
+  }
+
+  .hero_paragraph {
+    gap: 16px;
+  }
+
+  .hero_paragraph p {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .projet_text .btn-primary {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Galerie d'images empilée proprement sous le texte */
+  .projets_image {
+    order: 2;
+    width: 100%;
+    height: auto;
+    overflow-y: visible;
+    gap: 24px;
+    padding-bottom: 0;
+  }
+
+  .projets_image img {
+    cursor: auto;
+  }
+
+  /* Masque la loupe desktop sur écran tactile */
+  .loupe-projet {
+    display: none !important;
+  }
+}
+
+/* ==========================================================
+   TRÈS PETITS ÉCRANS (<= 380px)
+   ========================================================== */
+@media screen and (max-width: 380px) {
+  body {
+    padding: 0 18px;
+  }
+
+  header {
+    left: 18px;
+    right: 18px;
+  }
+
+  header .menu a {
+    font-size: 13px;
+  }
+}

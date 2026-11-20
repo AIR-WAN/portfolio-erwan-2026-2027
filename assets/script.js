@@ -22,10 +22,13 @@ document.addEventListener("DOMContentLoaded", () => {
       document.body.classList.add("is-loading");
       sessionStorage.setItem("loaderDejaVu", "true");
 
+      // 2.5s sur mobile pour laisser le temps de lire le message, 1.5s sur PC
+      const dureeLoader = window.innerWidth <= 768 ? 2500 : 1500;
+
       setTimeout(() => {
         loader.classList.add("loader-hidden");
         document.body.classList.remove("is-loading");
-      }, 1500);
+      }, dureeLoader);
     } else {
       loader.style.display = "none";
     }
@@ -152,7 +155,10 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 50) {
+    if (
+      window.innerHeight + window.scrollY >=
+      document.body.offsetHeight - 50
+    ) {
       sectionActuelle = "contact";
     }
 
