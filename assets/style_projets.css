@@ -1,0 +1,77 @@
+html,
+body {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.projet {
+  margin-top: 150px;
+  height: calc(100vh - 150px);
+  display: flex;
+  gap: 50px;
+}
+
+.projets_image {
+  position: relative;
+  width: 785px;
+  height: 100%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  padding-bottom: 50px;
+  scrollbar-width: none;
+}
+
+.projets_image::-webkit-scrollbar {
+  display: none;
+}
+
+.projets_image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.projet_text {
+  width: 785px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  padding-top: 80px;
+}
+
+.hero_paragraph{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ==========================================================
+   LOUPE RECTANGULAIRE AU SURVOL DES IMAGES
+   ========================================================== */
+.projets_image img {
+  cursor: none; /* Masque le curseur par défaut pour laisser place au rectangle loupe */
+}
+
+.loupe-projet {
+  position: fixed;
+  width: 260px;  /* Largeur du rectangle loupe */
+  height: 180px; /* Hauteur du rectangle loupe */
+  border: 2px solid #0c0c0c;
+  background-color: #f7f7f7;
+  background-repeat: no-repeat;
+  pointer-events: none; /* Permet de continuer à scroller et survoler l'image sans gêne */
+  z-index: 500;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.92);
+  transition: opacity 0.2s ease, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 12px 35px rgba(12, 12, 12, 0.18);
+}
+
+.loupe-projet.est-visible {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
